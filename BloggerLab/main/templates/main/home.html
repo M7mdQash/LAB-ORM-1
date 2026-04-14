@@ -2,4 +2,17 @@
 
 {% block content%}
 <h1>Welcome to BloggerLab!</h1>
+
+    {% for Blogs in Blogs  %}
+    {% if Blogs.is_published == True %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">{{ Blogs.title }}</h5>
+            <p class="card-text">{{ Blogs.content }}</p>
+            <p class="card-text"><small class="text-muted">Created at: {{ Blogs.published_at }}</small></p>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+
 {%endblock%}
