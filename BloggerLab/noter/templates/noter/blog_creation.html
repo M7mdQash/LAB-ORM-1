@@ -2,7 +2,7 @@
 
 {% block content%}
 <h1>Welcome to blog making!</h1>
-    <form method="post">
+    <form method="post" action="{% url 'noter:create_blog_view'%}" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
@@ -19,8 +19,19 @@
         <!-- selecting date to publish -->
         <div class="mb-3">
             <label for="publish_date" class="form-label">Publish Date</label>
-            <input type="datetime-local" class="form-control" id="published_at" name="published_at">
+            <input type="date" class="form-control" id="published_at" name="published_at">
         </div> 
+        <!-- selecting image -->
+        <div class="mb-3">
+            <label for="image" class="form-label">Blog Image</label>
+            <input type="file" class="form-control" id="image" name="image">
+        </div>
+        <!-- selecting file-->
+
+        <div class="mb-3">
+            <label for="file" class="form-label">Blog File</label>
+            <input type="file" class="form-control" id="file" name="file">
+        </div>
 
         <button type="submit" class="btn btn-primary">Create Blog Post</button>
     </form>

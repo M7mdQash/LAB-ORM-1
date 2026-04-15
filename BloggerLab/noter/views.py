@@ -8,6 +8,14 @@ from .models import Blog
 def create_blog_view(request:HttpRequest):
     if request.method == "POST":
         print(request.POST)
-        new_blog = Blog(title=request.POST["title"], content=request.POST["content"])
+        new_blog = Blog(title=request.POST["title"],
+                        content=request.POST["content"],
+                        is_published=request.POST.get("is_published") == "on",
+                        published_at=request.POST["published_at"],
+                        )
+        if request.FILES.get("image"):
+            new_blog.image = request.FILES["image"]
+        if request.FILES.get("file"):
+            new_blog.files = request.FILES["file"]
         new_blog.save()
     return render(request, "noter/blog_creation.html")
