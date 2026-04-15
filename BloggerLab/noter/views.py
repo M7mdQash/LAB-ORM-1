@@ -19,3 +19,8 @@ def create_blog_view(request:HttpRequest):
             new_blog.files = request.FILES["file"]
         new_blog.save()
     return render(request, "noter/blog_creation.html")
+
+def blog_details_view(request:HttpRequest,blog_id:int):
+    blog = Blog.objects.get(pk=blog_id)
+    print(blog)
+    return render(request,'noter/blog_details.html',{"blog":blog})

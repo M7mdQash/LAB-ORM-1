@@ -1,0 +1,18 @@
+{%extends 'main/base.html'%}
+
+{% block content%}
+<h1>details of blog {{blog.title}}</h1>
+ <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">{{ blog.title }}</h5>
+            {% if blog.image %}
+            <img src="{{ blog.image.url }}" class="card-img-top w-50" alt="Blog Image">
+            {% endif %}
+            <p class="card-text">{{ blog.content }}</p>
+            <p class="card-text"><small class="text-muted">Created at: {{ blog.published_at }}</small></p>
+            {% if blog.file %}
+            <a href="{{ blog.file.url }}" class="btn btn-primary">Download File</a>
+            {% endif %}
+        </div>
+    </div>
+{%endblock content%}

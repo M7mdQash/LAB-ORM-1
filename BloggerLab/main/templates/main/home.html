@@ -6,14 +6,15 @@
     {% for Blogs in Blogs  %}
     {% if Blogs.is_published == True %}
     <div class="card mb-3">
+        <a href="{% url 'noter:blog_details_view' Blogs.id %}">
         <div class="card-body">
             <h5 class="card-title">{{ Blogs.title }}</h5>
-            <p class="card-text">{{ Blogs.content }}</p>
             {% if Blogs.image %}
             <img src="{{ Blogs.image.url }}" class="card-img-top w-50" alt="Blog Image">
             {% endif %}
             <p class="card-text"><small class="text-muted">Created at: {{ Blogs.published_at }}</small></p>
         </div>
+        </a>
     </div>
     {% endif %}
     {% endfor %}
