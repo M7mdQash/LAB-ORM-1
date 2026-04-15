@@ -4,7 +4,7 @@
 <h1>Welcome to BloggerLab!</h1>
 
     {% for Blogs in Blogs  %}
-    {% if Blogs.is_published == True %}
+    
     <div class="card mb-3">
         <a href="{% url 'noter:blog_details_view' Blogs.id %}">
         <div class="card-body">
@@ -16,7 +16,6 @@
         </div>
         </a>
     </div>
-    {% endif %}
     {% endfor %}
 
 {%endblock%}
